@@ -58,7 +58,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - PUBLIC_URL=/IntegrationContinue
+      - PUBLIC_URL=/IntegrationContinue_solo
     depends_on:
       - api
 
