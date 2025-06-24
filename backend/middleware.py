@@ -16,7 +16,7 @@ def admin_required(f):
             print("Authorization header:", auth_header)
             token = auth_header.split(' ')[1]
             payload = jwt.decode(token, current_app.config['SECRET_KEY'], algorithms=['HS256'])
-            from hello import db 
+            from backend.main import db 
             # Vérifier si l'utilisateur existe dans la collection administrators
             admin = db.administrators.find_one({'email': payload['email']})
             if not admin:

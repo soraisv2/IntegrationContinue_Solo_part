@@ -46,7 +46,9 @@ const RegistrationForm = ({ setSuccessful }) => {
 
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const response = await axios.post(`${process.env.PYTHON_APP_API_BASE_URL}/users`, formData);
+        const apiBaseUrl = process.env.REACT_APP_PYTHON_APP_API_BASE_URL;
+        alert(`API Base URL: ${apiBaseUrl}`);
+        const response = await axios.post(`${apiBaseUrl}/users`, formData);
         if (response.status === 201) {
           // Sauvegarde dans le localStorage pour compatibilité
           localStorage.setItem('userData', JSON.stringify(formData));
