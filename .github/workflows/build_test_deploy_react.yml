@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    tags: 
-      - '*.*.*'
 
 jobs:
   test:
@@ -31,13 +29,9 @@ jobs:
       - name: Run tests
         run: npm run test:coverage
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v3
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        with:
-          flags: ${{ matrix.node-version }}
-          token: ${{ secrets.CODECOV_TOKEN }}
-          slug: soraisv2/IntegrationContinue_Solo_part
       - name: Stop the stack
         run: docker compose -f docker-compose.yml down
 
